@@ -38,15 +38,20 @@
                                                          onclick="">Add New</button>
       </div>
     </div>
-    
-    
-    
-    
   </div>
   
+  
+  <div id="CollectionScreen">
+    <div class="NavBar">
+      <button onclick="">Back</button>
+    </div>
+  </div>
+  
+  
   <script>
-    CollectionClick(){
+    function CollectionClick(id){
       document.getElementById("HomeScreen").style.display = "none";
+      document.getElementById(id).style.display = "inline";
     };
   </script>
   
