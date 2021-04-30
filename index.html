@@ -125,9 +125,11 @@
       
       <div class="InputForm">
         <form>
-          Game Title: <br> <input type="text" name="gameTitle">
+          Game Title: <br> <input type="text" id="gameTitleInput" name="gameTitle" value="game title">
           <br>
+          <p id="searchResults"></p>
         </form>
+        <button type="button" onclick="searchForGame()">Search</button>
       </div>
     </div>
   </div>
@@ -142,6 +144,11 @@
     function backClick(id){
       document.getElementById("HomeScreen").style.display = "block";
       document.getElementById(id).style.display = "none";
+    };
+    
+    function searchForGame(){
+      var inputVal = document.getElementById("gameTitleInput").value;
+      document.getElementById("searchResults").value = inputVal + " not found.";
     };
   </script>
   
