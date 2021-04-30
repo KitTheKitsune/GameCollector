@@ -1,25 +1,40 @@
 <!doctype html>
 <html>
 <head>
+  <style>
+    .Body {
+      background-color: #434343;
+    }
+    .Background {
+      height:1920px; 
+      width:1080px; 
+      background-color: #434343;
+    }
+    .Selections {
+      width:60%; 
+      margin-left:auto; 
+      margin-right:auto;
+    }
+    .SectionButton {
+      width:300px; 
+      height:200px;
+    }
+  </style>
   
 </head>
-<body style="background-color: #434343;">
-  <div class="Background" style="height:1920px; width:1080px; background-color: #434343;">
-    <div class="Selections" style="width:60%; margin-left:auto; margin-right:auto">
+<body class="Body">
+  <div id="HomeScreen">
+    <div class="Selections">
       <div class="ButtonLine">
         <button type="image" class="SectionButton"><img src="images/collection.jpeg" class="ButtonImage" 
-                                                         style="width:50%; height:200px;"
                                                         onclick="CollectionClick()">Collection</button>
         <button type="button" class="SectionButton"><img src="images/analysis.png" class="ButtonImage"
-                                                         style="width:50%; height:200px;"
                                                          onclick="">Analysis</button>
       </div>
       <div class="ButtonLine">
         <button type="button" class="SectionButton"><img src="images/recommend.png" class="ButtonImage"
-                                                         style="width:300px; height:200px;"
                                                          onclick="">Recommend</button>
         <button type="button" class="SectionButton"><img src="images/addNew.png" class="ButtonImage"
-                                                         style="width:300px; height:200px;"
                                                          onclick="">Add New</button>
       </div>
     </div>
@@ -30,7 +45,9 @@
   </div>
   
   <script>
-    CollectionClick(){window.location.href="./collection/index.html"};
+    CollectionClick(){
+      document.getElementById("HomeScreen").style.display = none;
+    };
   </script>
   
 </body>
