@@ -6,13 +6,28 @@
       background-color: #434343;
     }
     .Background {
-      height:1920px; 
-      width:1080px; 
+      height:480px; 
+      width:720px; 
       background-color: #434343;
       margin: 0;
       padding: 0;
       buffer: 0;
     }
+    
+    @media only screen and (min-width: 1280px) {
+      .Background {
+        height:720px; 
+        width:1280px;
+      }
+    }
+    
+    @media only screen and (min-width: 1920px) {
+      .Background {
+        height:1080px; 
+        width:1920px;
+      }
+    }
+    
     .Selections {
       width:60%; 
       margin: 0;
