@@ -35,7 +35,7 @@
       padding: 0;
       buffer: 0;
     }
-    #CollectionScreen {
+    .Page {
       display: none;
     }
   </style>
@@ -46,31 +46,66 @@
     <div class="Selections">
       <div class="ButtonLine">
         <button type="image" class="SectionButton"><img src="images/collection.jpeg" class="ButtonImage" 
-                                                        onclick="CollectionClick('CollectionScreen')">Collection</button>
+                                                        onclick="selectionClick('CollectionScreen')">Collection</button>
         <button type="button" class="SectionButton"><img src="images/analysis.png" class="ButtonImage"
-                                                         onclick="">Analysis</button>
+                                                         onclick="selectionClick('AnalysisScreen')">Analysis</button>
       </div>
       <div class="ButtonLine">
         <button type="button" class="SectionButton"><img src="images/recommend.png" class="ButtonImage"
-                                                         onclick="">Recommend</button>
+                                                         onclick="selectionClick('RecommendScreen')">Recommend</button>
         <button type="button" class="SectionButton"><img src="images/addNew.png" class="ButtonImage"
-                                                         onclick="">Add New</button>
+                                                         onclick="selectionClick('AddNewScreen')">Add New</button>
       </div>
     </div>
   </div>
   
   
-  <div id="CollectionScreen">
+  <div id="CollectionScreen" class="Page">
     <div class="NavBar">
-      <button onclick="">Back</button>
+      <button onclick="backClick('CollectionScreen')">Back</button>
+    </div>
+    <div class="Content">
+      <h1>This is the Collections Screen</h1>
+    </div>
+  </div>
+  
+  <div id="AnalysisScreen" class="Page">
+    <div class="NavBar">
+      <button onclick="backClick('AnalysisScreen')">Back</button>
+    </div>
+    <div class="Content">
+      <h1>This is the Analysis Screen</h1>
+    </div>
+  </div>
+  
+  <div id="RecommendScreen" class="Page">
+    <div class="NavBar">
+      <button onclick="backClick('RecommendScreen')">Back</button>
+    </div>
+    <div class="Content">
+      <h1>This is the Recommend Screen</h1>
+    </div>
+  </div>
+  
+  <div id="AddNewScreen" class="Page">
+    <div class="NavBar">
+      <button onclick="backClick('AddNewScreen')">Back</button>
+    </div>
+    <div class="Content">
+      <h1>This is the Add New Screen</h1>
     </div>
   </div>
   
   
   <script>
-    function CollectionClick(id){
+    function selectionClick(id){
       document.getElementById("HomeScreen").style.display = "none";
       document.getElementById(id).style.display = "inline";
+    };
+    
+    function backClick(id){
+      document.getElementById("HomeScreen").style.display = "inline";
+      document.getElementById(id).style.display = "none";
     };
   </script>
   
