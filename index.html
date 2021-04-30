@@ -67,7 +67,7 @@
       padding: 0;
       buffer: 0;
     }
-    .InputForm {
+    #inputForm {
       background-color: #505050;
     }
   </style>
@@ -126,13 +126,31 @@
     <div class="Content">
       <h1 style="color: #FFFFFF;">Add New</h1>
       
-      <div class="InputForm">
+      <div id="inputForm">
         <form style="color: #FFFFFF;">
           Game Title: <br> <input type="text" id="gameTitleInput" name="gameTitle" value="game title">
           <br>
           <p id="searchResults"></p>
         </form>
         <button type="button" onclick="searchForGame()">Search</button>
+        <button type="button" id="addToDatabaseButton" onclick="addToDatabaseForm()" style="display:none;">Add To Database</button>
+      </div>
+      
+      <div id="addForm">
+        <form style="color: #FFFFFF;">
+          Game Title: <br> <input type="text" value="game title">
+          <br>
+          Rating: <br> <input type="text" value="rate from 1 to 10">
+          <br>
+          Difficulty: <br> <input type="text" value="rate from 1 to 10">
+          <br>
+          Length: <br> <input type="text" value="number of hours to complete the game">
+          <br>
+          Release Year: <br> <input type="text" value="year of the game's release">
+          <br>
+          <p id="confirmation"></p>
+        </form>
+        <button type="button" onclick="">Confirm</button>
       </div>
     </div>
   </div>
@@ -152,6 +170,12 @@
     function searchForGame(){
       var inputVal = document.getElementById("gameTitleInput").value;
       document.getElementById("searchResults").innerHTML = inputVal + " not found.";
+      document.getElementById("addToDatabaseButton").style.display = "inline";
+    };
+    
+    function addToDataBaseForm(){
+      document.getElementById("addForm").style.display = "block";
+      document.getElementById("inputForm").style.display = "none";
     };
   </script>
   
