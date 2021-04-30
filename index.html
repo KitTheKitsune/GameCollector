@@ -152,7 +152,7 @@
           <br>
           <p id="confirmation"></p>
         </form>
-        <button type="button" onclick="">Confirm</button>
+        <button type="button" onclick="addToDatabase()">Confirm</button>
       </div>
     </div>
   </div>
@@ -178,6 +178,11 @@
     function addToDatabaseForm(){
       document.getElementById("addForm").style.display = "block";
       document.getElementById("inputForm").style.display = "none";
+    };
+    
+    function addToDatabase(){
+      document.getElementById("addForm").style.display = "none";
+      document.getElementById("inputForm").style.display = "block";
     };
   </script>
   
