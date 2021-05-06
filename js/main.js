@@ -231,9 +231,9 @@ function addGameToCollections(game) {
 
 function calcRetroness(year) {
   year = parseInt(year);
-  const oldest = 1987;
-  const yearsSince = year - 1987;
-  var max = new Date().getFullYear() - 1987;
+  const oldest = 1970;
+  const yearsSince = year - oldest;
+  var max = new Date().getFullYear() - oldest;
   var out = max / yearsSince;
   return Math.round(out * 10) / 10;
 };
