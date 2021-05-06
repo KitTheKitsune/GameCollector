@@ -21,7 +21,7 @@ class Game {
   
   //getters and setters
   get title(){
-    return this.title;
+    return this._title;
   };
   
   set title(x){
@@ -29,7 +29,7 @@ class Game {
   };
   
   get popularity(){
-    return this.popularity;
+    return this._popularity;
   };
   
   set popularity(x){
@@ -37,7 +37,7 @@ class Game {
   };
   
   get difficulty(){
-    return this.difficulty;
+    return this._difficulty;
   };
   
   set difficulty(x){
@@ -45,7 +45,7 @@ class Game {
   };
   
   get hours(){
-    return this.hours;
+    return this._hours;
   };
   
   set hours(x){
@@ -53,7 +53,7 @@ class Game {
   };
   
   get length(){
-    return this.length;
+    return this._length;
   };
   
   set length(x){
@@ -61,7 +61,7 @@ class Game {
   };
   
   get releaseYear(){
-    return this.releaseYear;
+    return this._releaseYear;
   };
   
   set releaseYear(x){
@@ -69,7 +69,7 @@ class Game {
   };
   
   get retroness(){
-    return this.retroness;
+    return this._retroness;
   };
   
   set retroness(x){
@@ -77,7 +77,7 @@ class Game {
   };
   
   get intensity(){
-    return this.intensity;
+    return this._intensity;
   };
   
   set intensity(x){
@@ -85,7 +85,7 @@ class Game {
   };
   
   get violence(){
-    return this.violence;
+    return this._violence;
   };
   
   set violence(x){
@@ -99,7 +99,7 @@ class Database {
   };
   
   get gameList(){
-    return this.gameList;
+    return this._gameList;
   };
   
   set gameList(array){
