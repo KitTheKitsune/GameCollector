@@ -6,30 +6,7 @@ function regSW(){
 };
 
 class Game {
-  constructor(){
-    this.title = "game not found";
-    this.popularity = 1;
-    this.difficulty = 1;
-    this.hours = 80;
-    this.length = calcLength(this.hours);
-    this.releaseYear = 1940
-    this.retroness = calcRetroness(this.releaseYear);
-    this.intensity = 1;
-    this.violence = 1;
-  };
-  
-  constructor(title){
-    this.title = title;
-    this.popularity = 1;
-    this.difficulty = 1;
-    this.hours = 80;
-    this.length = calcLength(this.hours);
-    this.releaseYear = 1940
-    this.retroness = calcRetroness(this.releaseYear);
-    this.intensity = 1;
-    this.violence = 1;
-  };
-  
+
   constructor(title, popularity, difficulty, hours, releaseYear, intensity, violence){
     this.title = title;
     this.popularity = popularity;
@@ -120,7 +97,7 @@ function searchForGame(){
   var inputVal = document.getElementById("gameTitleInput").value;
   var ourGame = Database.findGame(inputVal);
   
-  if (outGame.title().equals("game not found")){
+  if (outGame.title() == null){
     document.getElementById("searchResults").innerHTML = inputVal + " not found.";
     document.getElementById("addToDatabaseButton").style.display = "inline";
   }else{
