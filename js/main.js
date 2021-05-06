@@ -3,7 +3,108 @@ function regSW(){
   if('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js');
   }
-}
+};
+
+class Game {
+  constructor(){
+    this.title = "game not found";
+    this.popularity = 1;
+    this.difficulty = 1;
+    this.hours = 80;
+    this.length = calcLength(this.hours);
+    this.releaseYear = 1940
+    this.retroness = calcRetroness(this.releaseYear);
+    this.intensity = 1;
+    this.violence = 1;
+  };
+  
+  constructor(title){
+    this.title = title;
+    this.popularity = 1;
+    this.difficulty = 1;
+    this.hours = 80;
+    this.length = calcLength(this.hours);
+    this.releaseYear = 1940
+    this.retroness = calcRetroness(this.releaseYear);
+    this.intensity = 1;
+    this.violence = 1;
+  };
+  
+  constructor(title, popularity, difficulty, hours, releaseYear, intensity, violence){
+    this.title = title;
+    this.popularity = popularity;
+    this.difficulty = difficulty;
+    this.hours = hours;
+    this.length = calcLength(hours);
+    this.releaseYear = releaseYear;
+    this.retroness = calcRetroness(releaseYear);
+    this.intensity = intensity;
+    this.violence = violence;
+  };
+  
+  //getters
+  get title(){
+    return this.title;
+  };
+  
+  get popularity(){
+    return this.popularity;
+  };
+  
+  get difficulty(){
+    return this.difficulty;
+  };
+  
+  get hours(){
+    return this.hours;
+  };
+  
+  get length(){
+    return this.length;
+  };
+  
+  get releaseYear(){
+    return this.releaseYear;
+  };
+  
+  get retroness(){
+    return this.retroness;
+  };
+  
+  get intensity(){
+    return this.intensity;
+  };
+  
+  get violence(){
+    return this.violence;
+  };
+};
+
+class Database {
+  constructor(){
+    this.gameList = [];
+  };
+  
+  get gameList(){
+    return this.gameList;
+  };
+  
+  addGame(game){
+    this.gameList.push(game);
+  };
+  
+  findGame(gameTitle){
+     for (let i = 0; i < this.gameList.length; i++){
+       if (this.gameList[i].title() == gameTitle){
+         return this.gameList[i];
+       }
+     }
+    return new Game();
+  };
+  
+};
+  
+var Database = new Database();
 
 function selectionClick(id){
       document.getElementById("HomeScreen").style.display = "none";
@@ -17,11 +118,17 @@ function backClick(id){
 
 function searchForGame(){
   var inputVal = document.getElementById("gameTitleInput").value;
-  document.getElementById("searchResults").innerHTML = inputVal + " not found.";
-  document.getElementById("addToDatabaseButton").style.display = "inline";
+  var ourGame = Database.findGame(inputVal);
+  
+  if (outGame.title().equals("game not found")){
+    document.getElementById("searchResults").innerHTML = inputVal + " not found.";
+    document.getElementById("addToDatabaseButton").style.display = "inline";
+  }else{
+    addGameToCollections(ourGame);
+  }
 };
 
-function addToDatabaseForm(){
+function showAddToDatabaseForm(){
   //show the add form
   document.getElementById("addForm").style.display = "block";
 
@@ -45,20 +152,28 @@ function addToDatabase(){
   var retroness = document.getElementById("inputRetroness").value;
   var intensity = document.getElementById("inputIntensity").value;
   var violence = document.getElementById("inputViolence").value;
+  
+  const newGame = new Game(title, popularity, difficulty, length, retroness, intensity, violence);
 
   //insert data into collections
-  createNewGame(title, popularity, difficulty, length, retroness, intensity, violence);
+  addGameToCollections(newGame);
+  
+  //insert game object into database
+  
 };
 
-function createNewGame(tit, pop, dif, len, ret, int, vio) {
+function addGameToCollections(game) {
   //create a new div
   const newDiv = document.createElement("div");
   newDiv.style = "outline-width: 2px; outline-style: solid;";
+  
+  //create game object
+  
 
   //give it content
   const image = document.createElement("img");
   image.src = "images/GenericGameImage.png";
-  var content = document.createTextNode(tit);
+  var content = document.createTextNode(game.title());
   var breakline = document.createElement("br");
 
   //add the text node to the new div
@@ -69,29 +184,27 @@ function createNewGame(tit, pop, dif, len, ret, int, vio) {
   newDiv.appendChild(breakline);
 
   //repeat
-  content = document.createTextNode("Popularity: " + pop);
+  content = document.createTextNode("Popularity: " + game.popularity());
   breakline = document.createElement("br");
   newDiv.appendChild(content);
   newDiv.appendChild(breakline);
-  content = document.createTextNode("Difficulty: " + dif);
+  content = document.createTextNode("Difficulty: " + game.difficulty());
   breakline = document.createElement("br");
   newDiv.appendChild(content);
   newDiv.appendChild(breakline);
-  var length = calcLength(len);
-  content = document.createTextNode("Length: " + length);
+  content = document.createTextNode("Length: " + game.length());
   breakline = document.createElement("br");
   newDiv.appendChild(content);
   newDiv.appendChild(breakline);
-  var retroness = calcRetroness(ret);
-  content = document.createTextNode("Retroness: " + retroness);
+  content = document.createTextNode("Retroness: " + game.retroness());
   breakline = document.createElement("br");
   newDiv.appendChild(content);
   newDiv.appendChild(breakline);
-  content = document.createTextNode("Intensity: " + int);
+  content = document.createTextNode("Intensity: " + game.intensity());
   breakline = document.createElement("br");
   newDiv.appendChild(content);
   newDiv.appendChild(breakline);
-  content = document.createTextNode("Violence: " + vio);
+  content = document.createTextNode("Violence: " + game.violence());
   breakline = document.createElement("br");
   newDiv.appendChild(content);
   newDiv.appendChild(breakline);
