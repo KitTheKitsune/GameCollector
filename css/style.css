@@ -3,26 +3,17 @@ body {
 }
 
 html,
-.fullscreen {
-  display:flex;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-
-/* center the content in the browser window*/
-.container {
-  margin:auto;
-  text-align:center;
-}
-
 .title{
   font-size: 3rem;
 }
 
 .Body {
-      background-color: #434343;
+  background-color: #434343;
+  display:flex;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 .Background {
   height:480px; 
@@ -56,6 +47,8 @@ html,
   margin-bottom: auto;
   padding: 0;
   buffer: 0;
+  margin:auto;
+  text-align:center;
 }
 .SectionButton {
   width: 48%;
@@ -80,6 +73,7 @@ html,
   margin: 0;
   padding: 0;
   buffer: 0;
+  width: 60%;
 }
 .NavBar {
   background-color: #505050;
