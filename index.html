@@ -245,11 +245,13 @@
       breakline = document.createElement("br");
       newDiv.appendChild(content);
       newDiv.appendChild(breakline);
-      content = document.createTextNode("Length: " + len);
+      var length = calcLength(len);
+      content = document.createTextNode("Length: " + length);
       breakline = document.createElement("br");
       newDiv.appendChild(content);
       newDiv.appendChild(breakline);
-      content = document.createTextNode("Retroness: " + ret);
+      var retroness = calcRetroness(ret);
+      content = document.createTextNode("Retroness: " + retroness);
       breakline = document.createElement("br");
       newDiv.appendChild(content);
       newDiv.appendChild(breakline);
@@ -265,6 +267,21 @@
       //insert
       const currentDiv = document.getElementById("insertBefore");
       document.getElementById("manual").insertBefore(newDiv,currentDiv);
+    };
+    
+    function calcRetroness(year) {
+      const oldest = 1987;
+      const yearsSince = year - 1987;
+      var d = new Date();
+      var max = d.getFullYear();
+      return max/yearsSince;
+    };
+    
+    function calcLength(hours) {
+      if (hours > 80) {
+        hours = 80;
+      }
+      return hours / 80 * 10;
     };
       
   </script>
