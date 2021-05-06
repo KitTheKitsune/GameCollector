@@ -25,7 +25,7 @@ class Game {
   };
   
   set title(x){
-    this.title = x;
+    this._title = x;
   };
   
   get popularity(){
@@ -33,7 +33,7 @@ class Game {
   };
   
   set popularity(x){
-    this.popularity = x;
+    this._popularity = x;
   };
   
   get difficulty(){
@@ -41,7 +41,7 @@ class Game {
   };
   
   set difficulty(x){
-    this.difficulty = x;
+    this._difficulty = x;
   };
   
   get hours(){
@@ -49,7 +49,7 @@ class Game {
   };
   
   set hours(x){
-    this.hours = x;
+    this._hours = x;
   };
   
   get length(){
@@ -57,7 +57,7 @@ class Game {
   };
   
   set length(x){
-    this.length = x;
+    this._length = x;
   };
   
   get releaseYear(){
@@ -65,7 +65,7 @@ class Game {
   };
   
   set releaseYear(x){
-    this.releaseYear = x;
+    this._releaseYear = x;
   };
   
   get retroness(){
@@ -73,7 +73,7 @@ class Game {
   };
   
   set retroness(x){
-    this.retroness = x;
+    this._retroness = x;
   };
   
   get intensity(){
@@ -81,7 +81,7 @@ class Game {
   };
   
   set intensity(x){
-    this.intensity = x;
+    this._intensity = x;
   };
   
   get violence(){
@@ -89,7 +89,7 @@ class Game {
   };
   
   set violence(x){
-    this.violence = x;
+    this._violence = x;
   };
 };
 
@@ -103,7 +103,7 @@ class Database {
   };
   
   set gameList(array){
-    this.gameList = array;
+    this._gameList = array;
   };
   
   addGame(game){
@@ -120,8 +120,6 @@ class Database {
   };
   
 };
-  
-var MyDatabase = new Database();
 
 function selectionClick(id){
       document.getElementById("HomeScreen").style.display = "none";
@@ -135,9 +133,9 @@ function backClick(id){
 
 function searchForGame(){
   var inputVal = document.getElementById("gameTitleInput").value;
-  var ourGame = MyDatabase.findGame(inputVal);
+  var ourGame = null;
   
-  if (outGame.title() == null){
+  if (ourGame.title() == null){
     document.getElementById("searchResults").innerHTML = inputVal + " not found.";
     document.getElementById("addToDatabaseButton").style.display = "inline";
   }else{
