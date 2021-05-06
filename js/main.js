@@ -135,7 +135,7 @@ function searchForGame(){
   var inputVal = document.getElementById("gameTitleInput").value;
   var ourGame = null;
   
-  if (ourGame.title() == null){
+  if (true){
     document.getElementById("searchResults").innerHTML = inputVal + " not found.";
     document.getElementById("addToDatabaseButton").style.display = "inline";
   }else{
