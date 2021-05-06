@@ -3,10 +3,6 @@ body {
 }
 
 html,
-.title{
-  font-size: 3rem;
-}
-
 .Body {
   background-color: #434343;
   display:flex;
