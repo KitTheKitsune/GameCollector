@@ -40,7 +40,7 @@
   "start_url": "/GameCollector/index.html",
   "display": "standalone",
   "prefer_related_applications": false,
-  "background_color": "dark gray",
+  "background_color": "black",
   "theme_color": "black"
   
 }
