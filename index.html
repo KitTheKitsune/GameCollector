@@ -81,7 +81,7 @@
   
 </head>
 <body class="Body">
-  <p>V0.0.4</p>
+  <p>V0.0.5</p>
   <div id="HomeScreen">
     <div class="Content">
       <div class="ButtonLine">
@@ -221,6 +221,7 @@
     function createNewGame(tit, pop, dif, len, ret, int, vio) {
       //create a new div
       const newDiv = document.createElement("div");
+      newDiv.style = "border: 1px;";
       
       //give it content
       var image = document.createElement("image");
@@ -230,31 +231,33 @@
       
       //add the text node to the new div
       newDiv.appendChild(image);
+      newDiv.appendChild(breakline);
       newDiv.appendChild(content);
+      breakline = document.createElement("br");
       newDiv.appendChild(breakline);
       
       //repeat
-      content = document.createTextNode("Popularity:" + pop);
+      content = document.createTextNode("Popularity: " + pop);
       breakline = document.createElement("br");
       newDiv.appendChild(content);
       newDiv.appendChild(breakline);
-      content = document.createTextNode("Difficulty:" + dif);
+      content = document.createTextNode("Difficulty: " + dif);
       breakline = document.createElement("br");
       newDiv.appendChild(content);
       newDiv.appendChild(breakline);
-      content = document.createTextNode("Length:" + len);
+      content = document.createTextNode("Length: " + len);
       breakline = document.createElement("br");
       newDiv.appendChild(content);
       newDiv.appendChild(breakline);
-      content = document.createTextNode("Retroness:" + ret);
+      content = document.createTextNode("Retroness: " + ret);
       breakline = document.createElement("br");
       newDiv.appendChild(content);
       newDiv.appendChild(breakline);
-      content = document.createTextNode("Intensity:" + int);
+      content = document.createTextNode("Intensity: " + int);
       breakline = document.createElement("br");
       newDiv.appendChild(content);
       newDiv.appendChild(breakline);
-      content = document.createTextNode("Violence:" + vio);
+      content = document.createTextNode("Violence: " + vio);
       breakline = document.createElement("br");
       newDiv.appendChild(content);
       newDiv.appendChild(breakline);
