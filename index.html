@@ -105,8 +105,8 @@
     </div>
     <div class="Content">
       <h1 class="Title">Collections Screen</h1>
-      <div class="manuallyAdded" id="insertBefore">
-        <div >
+      <div class="manuallyAdded" id="manual">
+        <div  id="insertBefore">
         </div>
       </div>
     </div>
@@ -229,7 +229,7 @@
       
       //insert
       const currentDiv = document.getElementById("insertBefore");
-      document.body.insertBefore(newDiv,currentDiv);
+      document.getElementById("manual").insertBefore(newDiv,currentDiv);
     };
       
   </script>
