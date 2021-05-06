@@ -19,41 +19,77 @@ class Game {
     this.violence = violence;
   };
   
-  //getters
+  //getters and setters
   get title(){
     return this.title;
+  };
+  
+  set title(x){
+    this.title = x;
   };
   
   get popularity(){
     return this.popularity;
   };
   
+  set popularity(x){
+    this.popularity = x;
+  };
+  
   get difficulty(){
     return this.difficulty;
+  };
+  
+  set difficulty(x){
+    this.difficulty = x;
   };
   
   get hours(){
     return this.hours;
   };
   
+  set hours(x){
+    this.hours = x;
+  };
+  
   get length(){
     return this.length;
+  };
+  
+  set length(x){
+    this.length = x;
   };
   
   get releaseYear(){
     return this.releaseYear;
   };
   
+  set releaseYear(x){
+    this.releaseYear = x;
+  };
+  
   get retroness(){
     return this.retroness;
+  };
+  
+  set retroness(x){
+    this.retroness = x;
   };
   
   get intensity(){
     return this.intensity;
   };
   
+  set intensity(x){
+    this.intensity = x;
+  };
+  
   get violence(){
     return this.violence;
+  };
+  
+  set violence(x){
+    this.violence = x;
   };
 };
 
@@ -64,6 +100,10 @@ class Database {
   
   get gameList(){
     return this.gameList;
+  };
+  
+  set gameList(array){
+    this.gameList = array;
   };
   
   addGame(game){
