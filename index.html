@@ -105,6 +105,10 @@
     </div>
     <div class="Content">
       <h1 class="Title">Collections Screen</h1>
+      <div class="manuallyAdded">
+        <div id="insertBefore">
+        </div>
+      </div>
     </div>
   </div>
   
@@ -145,15 +149,19 @@
       
       <div id="addForm" style="display: none;">
         <form style="color: #FFFFFF;">
-          Game Title: <br> <input type="text" value="game title">
+          Game Title: <br> <input type="text" id="inputTitle" value="game title">
           <br>
-          Rating: <br> <input type="text" value="rate from 1 to 10">
+          Rating: <br> <input type="text" id="inputPopularity" value="rate from 1 to 10">
           <br>
-          Difficulty: <br> <input type="text" value="rate from 1 to 10">
+          Difficulty: <br> <input type="text" id="inputDifficulty" value="rate from 1 to 10">
           <br>
-          Length: <br> <input type="text" value="number of hours to complete the game">
+          Length: <br> <input type="text" id="inputLength" value="number of hours to complete the game">
           <br>
-          Release Year: <br> <input type="text" value="year of the game's release">
+          Release Year: <br> <input type="text" id="inputRetroness" value="year of the game's release">
+          <br>
+          Intensity: <br> <input type="text" id="inputIntensity" value="rate from 1 to 10">
+          <br>
+          Violence: <br> <input type="text" id="inputViolence" value="rate from 1 to 10">
           <br>
           <p id="confirmation"></p>
         </form>
@@ -181,14 +189,49 @@
     };
     
     function addToDatabaseForm(){
+      //show the add form
       document.getElementById("addForm").style.display = "block";
+      
+      //hide the input form
       document.getElementById("inputForm").style.display = "none";
+      
     };
     
     function addToDatabase(){
+      //hide the add form
       document.getElementById("addForm").style.display = "none";
+      
+      //show input new form
       document.getElementById("inputForm").style.display = "block";
+      
+      //pull data from new form
+      var title = document.getElementById("inputTitle").value;
+      var popularity = document.getElementById("inputPopularity").value;
+      var difficulty = document.getElementById("inputDifficulty").value;
+      var length = document.getElementById("inputLength").value;
+      var retroness = document.getElementById("inputRetroness").value;
+      var intensity = document.getElementById("inputIntensity").value;
+      var violence = document.getElementById("inputViolence").value;
+      
+      //insert data into collections
+      createNewGame(title, popularity, difficulty, length, retroness, intensity, violence);
     };
+    
+    function createNewGame(tit, pop, dif, len, ret, int, vio) {
+      //create a new div
+      const newDiv = document.createElement("div");
+      
+      //give it content
+      const content = document.createTextNode("\n" + tit + "\n" + pop + "\n" + dif + "\n" + len + "\n" + ret + "\n" + int + "\n" + vio);
+      
+      //add the text node to the new div
+      newDiv.appendChild(content);
+      
+      //insert
+      const currentDiv = document.getElementById("insertBefore");
+      document.body.insertBefore(newDiv,currentDiv);
+    };
+      
   </script>
   
 </body>
