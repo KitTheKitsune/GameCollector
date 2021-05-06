@@ -81,7 +81,7 @@
   
 </head>
 <body class="Body">
-  <p>V0.0.9</p>
+  <p>V0.1.0</p>
   <div id="HomeScreen">
     <div class="Content">
       <div class="ButtonLine">
@@ -270,6 +270,7 @@
     };
     
     function calcRetroness(year) {
+      year = parseInt(year);
       const oldest = 1987;
       const yearsSince = year - 1987;
       var d = new Date();
@@ -278,6 +279,7 @@
     };
     
     function calcLength(hours) {
+      hours = parseInt(hours);
       if (hours > 80) {
         hours = 80;
       }
