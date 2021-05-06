@@ -188,7 +188,7 @@ function addGameToCollections(game) {
   //give it content
   const image = document.createElement("img");
   image.src = "images/GenericGameImage.png";
-  var content = document.createTextNode(game.title());
+  var content = document.createTextNode(game.title);
   var breakline = document.createElement("br");
 
   //add the text node to the new div
@@ -199,27 +199,27 @@ function addGameToCollections(game) {
   newDiv.appendChild(breakline);
 
   //repeat
-  content = document.createTextNode("Popularity: " + game.popularity());
+  content = document.createTextNode("Popularity: " + game.popularity);
   breakline = document.createElement("br");
   newDiv.appendChild(content);
   newDiv.appendChild(breakline);
-  content = document.createTextNode("Difficulty: " + game.difficulty());
+  content = document.createTextNode("Difficulty: " + game.difficulty);
   breakline = document.createElement("br");
   newDiv.appendChild(content);
   newDiv.appendChild(breakline);
-  content = document.createTextNode("Length: " + game.length());
+  content = document.createTextNode("Length: " + game.length);
   breakline = document.createElement("br");
   newDiv.appendChild(content);
   newDiv.appendChild(breakline);
-  content = document.createTextNode("Retroness: " + game.retroness());
+  content = document.createTextNode("Retroness: " + game.retroness);
   breakline = document.createElement("br");
   newDiv.appendChild(content);
   newDiv.appendChild(breakline);
-  content = document.createTextNode("Intensity: " + game.intensity());
+  content = document.createTextNode("Intensity: " + game.intensity);
   breakline = document.createElement("br");
   newDiv.appendChild(content);
   newDiv.appendChild(breakline);
-  content = document.createTextNode("Violence: " + game.violence());
+  content = document.createTextNode("Violence: " + game.violence);
   breakline = document.createElement("br");
   newDiv.appendChild(content);
   newDiv.appendChild(breakline);
