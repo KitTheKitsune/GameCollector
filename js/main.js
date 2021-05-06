@@ -81,7 +81,7 @@ class Database {
   
 };
   
-var Database = new Database();
+var MyDatabase = new Database();
 
 function selectionClick(id){
       document.getElementById("HomeScreen").style.display = "none";
@@ -95,7 +95,7 @@ function backClick(id){
 
 function searchForGame(){
   var inputVal = document.getElementById("gameTitleInput").value;
-  var ourGame = Database.findGame(inputVal);
+  var ourGame = MyDatabase.findGame(inputVal);
   
   if (outGame.title() == null){
     document.getElementById("searchResults").innerHTML = inputVal + " not found.";
