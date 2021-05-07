@@ -8,12 +8,30 @@
 
   // EDITING STARTS HERE (you dont need to edit anything above this line)
 
-  var db = false;
+  var dbcollection = new PouchDB('Collection');
+  var db = new PouchDB('Database');
   var remoteCouch = false;
 
-  // We have to create a new todo document and enter it in the database
-  function addTodo(text) {
-  }
+  // We have to create a new game document and enter it in the database
+  function addGame(_title, _popularity, _difficulty, _releaseYear, _hoursToComplete, _intensity, _violence) {
+  var game = {
+    _id: _title,
+    title: _title,
+    popularity: _popularity,
+    difficulty: _difficulty,
+    releaseYear: _releaseYear,
+    retroness: _releaseYear,
+    hours: _hoursToComplete,
+    length: _hoursToComplete,
+    intensity: _intensity,
+    violence: _violence
+  };
+  db.put(game, function callback(err, result) {
+    if (!err) {
+      console.log('Successfully added a game!');
+    }
+  });
+}
 
   // Show the current list of todos by reading them from the database
   function showTodos() {
