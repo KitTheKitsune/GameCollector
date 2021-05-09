@@ -8,31 +8,63 @@
 
   // EDITING STARTS HERE (you dont need to edit anything above this line)
 
-  var db = false;
-  var remoteCouch = false;
+  var db = new PouchDB('todos');
+  var remoteCouch = 'http://user:pass@myname.example.com/todos';
+  
+  db.changes({
+    since: 'now',
+    live: true
+  }).on('change', showTodos);
 
   // We have to create a new todo document and enter it in the database
   function addTodo(text) {
+    var todo = {
+      _id: new Date().toISOString(),
+      title: text,
+      completed: false
+    };
+    db.put(todo, function callback(err, result) {
+      if (!err) {
+        console.log('Successfully posted a todo!');
+      }
+    });
   }
 
   // Show the current list of todos by reading them from the database
   function showTodos() {
+    db.allDocs({include_docs: true, descending: true}, function(err, doc) {
+      redrawTodosUI(doc.rows);
+    });
   }
 
   function checkboxChanged(todo, event) {
+    todo.completed = event.target.checked;
+    db.put(todo);
   }
 
   // User pressed the delete button for a todo, delete it
   function deleteButtonPressed(todo) {
+    db.remove(todo);
   }
 
   // The input box when editing a todo has blurred, we should save
   // the new title or delete the todo if the title is empty
   function todoBlurred(todo, event) {
+    var trimmedText = event.target.value.trim();
+    if (!trimmedText) {
+      db.remove(todo);
+    } else {
+      todo.title = trimmedText;
+      db.put(todo);
+    }
   }
 
   // Initialise a sync with the remote server
   function sync() {
+    syncDom.setAttribute('data-sync-state', 'syncing');
+    var opts = {live: true};
+    db.replicate.to(remoteCouch, opts, syncError);
+    db.replicate.from(remoteCouch, opts, syncError);
   }
 
   // EDITING STARTS HERE (you dont need to edit anything below this line)
