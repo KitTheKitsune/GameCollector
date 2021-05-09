@@ -3,94 +3,33 @@
   'use strict';
 
   var ENTER_KEY = 13;
-  var newGameDom = document.getElementById('new-game');
+  var newTodoDom = document.getElementById('new-todo');
   var syncDom = document.getElementById('sync-wrapper');
 
   // EDITING STARTS HERE (you dont need to edit anything above this line)
 
-  var dbcollection = new PouchDB('Collection');
-  var db = new PouchDB('Database');
+  var db = false;
   var remoteCouch = false;
-  
-  db.info(function(err, info) {
-    db.changes({
-      since: info.update_seq,
-      live: true
-    }).on('change', showGames);
-  });
 
-  // We have to create a new game document and enter it in the database
-  function addGame(_title, _popularity, _difficulty, _releaseYear, _hoursToComplete, _intensity, _violence, _image) {
-  var game = {
-    _id: new Date().toISOString() + _title,
-    title: _title,
-    popularity: _popularity,
-    difficulty: _difficulty,
-    releaseYear: _releaseYear,
-    retroness: _releaseYear,
-    hours: _hoursToComplete,
-    length: _hoursToComplete,
-    intensity: _intensity,
-    violence: _violence,
-    splash: _image
-  };
-  db.put(game, function callback(err, result) {
-    if (!err) {
-      console.log('Successfully added a game!');
-    }
-  });
-    
- function addCollection(_title, _popularity, _difficulty, _releaseYear, _hoursToComplete, _intensity, _violence, _image) {
-  var game = {
-    _id: new Date().toISOString() + _title,
-    title: _title,
-    popularity: _popularity,
-    difficulty: _difficulty,
-    releaseYear: _releaseYear,
-    retroness: _releaseYear,
-    hours: _hoursToComplete,
-    length: _hoursToComplete,
-    intensity: _intensity,
-    violence: _violence,
-    splash: _image
-  };
-  dbcollection.put(game, function callback(err, result) {
-    if (!err) {
-      console.log('Successfully added a game!');
-    }
-  });
-}
-
-  // Show the current list of games by reading them from the database
-  function showGames() {
-    db.allDocs({include_docs: true, descending: true}, function(err, doc) {
-      redrawGamesUI(doc.rows);
-    }).catch(function (err) {
-      console.log(err);
-    });
+  // We have to create a new todo document and enter it in the database
+  function addTodo(text) {
   }
 
-  function checkboxChanged(game, event) {
-  game.completed = event.target.checked;
-  db.put(game);
-}
-
-  // User pressed the delete button for a game, delete it
-  function deleteButtonPressed(game) {
-  db.remove(game);
-}
-
-  // The input box when editing a game has blurred, we should save
-  // the new title or delete the game if the title is empty
-  function gameBlurred(game, event) {
-  var trimmedText = event.target.value.trim();
-  if (!trimmedText) {
-    db.remove(game);
-  } else {
-    game.title = trimmedText;
-    db.put(game);
+  // Show the current list of todos by reading them from the database
+  function showTodos() {
   }
-}
+
+  function checkboxChanged(todo, event) {
+  }
+
+  // User pressed the delete button for a todo, delete it
+  function deleteButtonPressed(todo) {
+  }
+
+  // The input box when editing a todo has blurred, we should save
+  // the new title or delete the todo if the title is empty
+  function todoBlurred(todo, event) {
+  }
 
   // Initialise a sync with the remote server
   function sync() {
@@ -103,38 +42,38 @@
     syncDom.setAttribute('data-sync-state', 'error');
   }
 
-  // User has double clicked a game, display an input so they can edit the title
-  function gameDblClicked(game) {
-    var div = document.getElementById('li_' + game._id);
-    var inputEditGame = document.getElementById('input_' + game._id);
+  // User has double clicked a todo, display an input so they can edit the title
+  function todoDblClicked(todo) {
+    var div = document.getElementById('li_' + todo._id);
+    var inputEditTodo = document.getElementById('input_' + todo._id);
     div.className = 'editing';
-    inputEditGame.focus();
+    inputEditTodo.focus();
   }
 
   // If they press enter while editing an entry, blur it to trigger save
   // (or delete)
-  function gameKeyPressed(game, event) {
+  function todoKeyPressed(todo, event) {
     if (event.keyCode === ENTER_KEY) {
-      var inputEditGame = document.getElementById('input_' + game._id);
-      inputEditGame.blur();
+      var inputEditTodo = document.getElementById('input_' + todo._id);
+      inputEditTodo.blur();
     }
   }
 
   // Given an object representing a todo, this will create a list item
   // to display it.
-  function createGameListItem(game) {
+  function createTodoListItem(todo) {
     var checkbox = document.createElement('input');
     checkbox.className = 'toggle';
     checkbox.type = 'checkbox';
-    checkbox.addEventListener('change', checkboxChanged.bind(this, game));
+    checkbox.addEventListener('change', checkboxChanged.bind(this, todo));
 
     var label = document.createElement('label');
-    label.appendChild( document.createTextNode(game.title));
-    label.addEventListener('dblclick', gameDblClicked.bind(this, game));
+    label.appendChild( document.createTextNode(todo.title));
+    label.addEventListener('dblclick', todoDblClicked.bind(this, todo));
 
     var deleteLink = document.createElement('button');
     deleteLink.className = 'destroy';
-    deleteLink.addEventListener( 'click', deleteButtonPressed.bind(this, game));
+    deleteLink.addEventListener( 'click', deleteButtonPressed.bind(this, todo));
 
     var divDisplay = document.createElement('div');
     divDisplay.className = 'view';
@@ -142,19 +81,19 @@
     divDisplay.appendChild(label);
     divDisplay.appendChild(deleteLink);
 
-    var inputEditGame = document.createElement('input');
-    inputEditGame.id = 'input_' + game._id;
-    inputEditGame.className = 'edit';
-    inputEditGame.value = game.title;
-    inputEditGame.addEventListener('keypress', gameKeyPressed.bind(this, game));
-    inputEditGame.addEventListener('blur', gameBlurred.bind(this, game));
+    var inputEditTodo = document.createElement('input');
+    inputEditTodo.id = 'input_' + todo._id;
+    inputEditTodo.className = 'edit';
+    inputEditTodo.value = todo.title;
+    inputEditTodo.addEventListener('keypress', todoKeyPressed.bind(this, todo));
+    inputEditTodo.addEventListener('blur', todoBlurred.bind(this, todo));
 
     var li = document.createElement('li');
-    li.id = 'li_' + game._id;
+    li.id = 'li_' + todo._id;
     li.appendChild(divDisplay);
-    li.appendChild(inputEditGame);
+    li.appendChild(inputEditTodo);
 
-    if (game.completed) {
+    if (todo.completed) {
       li.className += 'complete';
       checkbox.checked = true;
     }
@@ -162,27 +101,27 @@
     return li;
   }
 
-  function redrawGamesUI(games) {
-    var ul = document.getElementById('game-list');
+  function redrawTodosUI(todos) {
+    var ul = document.getElementById('todo-list');
     ul.innerHTML = '';
-    games.forEach(function(game) {
-      ul.appendChild(createGameListItem(game.doc));
+    todos.forEach(function(todo) {
+      ul.appendChild(createTodoListItem(todo.doc));
     });
   }
 
-  function newGameKeyPressHandler( event ) {
+  function newTodoKeyPressHandler( event ) {
     if (event.keyCode === ENTER_KEY) {
-      addGame(newGameDom.value);
-      newGameDom.value = '';
+      addTodo(newTodoDom.value);
+      newTodoDom.value = '';
     }
   }
 
   function addEventListeners() {
-    newGameDom.addEventListener('keypress', newGameKeyPressHandler, false);
+    newTodoDom.addEventListener('keypress', newTodoKeyPressHandler, false);
   }
 
   addEventListeners();
-  showGames();
+  showTodos();
 
   if (remoteCouch) {
     sync();
