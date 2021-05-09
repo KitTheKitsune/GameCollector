@@ -5,122 +5,6 @@ function regSW(){
   }
 };
 
-class Game {
-
-  constructor(title, popularity, difficulty, hours, releaseYear, intensity, violence){
-    this.title = title;
-    this.popularity = popularity;
-    this.difficulty = difficulty;
-    this.hours = hours;
-    this.length = calcLength(hours);
-    this.releaseYear = releaseYear;
-    this.retroness = calcRetroness(releaseYear);
-    this.intensity = intensity;
-    this.violence = violence;
-  };
-  
-  //getters and setters
-  get title(){
-    return this._title;
-  };
-  
-  set title(x){
-    this._title = x;
-  };
-  
-  get popularity(){
-    return this._popularity;
-  };
-  
-  set popularity(x){
-    this._popularity = x;
-  };
-  
-  get difficulty(){
-    return this._difficulty;
-  };
-  
-  set difficulty(x){
-    this._difficulty = x;
-  };
-  
-  get hours(){
-    return this._hours;
-  };
-  
-  set hours(x){
-    this._hours = x;
-  };
-  
-  get length(){
-    return this._length;
-  };
-  
-  set length(x){
-    this._length = x;
-  };
-  
-  get releaseYear(){
-    return this._releaseYear;
-  };
-  
-  set releaseYear(x){
-    this._releaseYear = x;
-  };
-  
-  get retroness(){
-    return this._retroness;
-  };
-  
-  set retroness(x){
-    this._retroness = x;
-  };
-  
-  get intensity(){
-    return this._intensity;
-  };
-  
-  set intensity(x){
-    this._intensity = x;
-  };
-  
-  get violence(){
-    return this._violence;
-  };
-  
-  set violence(x){
-    this._violence = x;
-  };
-};
-
-class Database {
-  constructor(){
-    this.gameList = [];
-  };
-  
-  get gameList(){
-    return this._gameList;
-  };
-  
-  set gameList(array){
-    this._gameList = array;
-  };
-  
-  addGame(game){
-    this.gameList.push(game);
-  };
-  
-  findGame(gameTitle){
-     for (let i = 0; i < this.gameList.length; i++){
-       if (this.gameList[i].title() == gameTitle){
-         return this.gameList[i];
-       }
-     }
-    return new Game();
-  };
-  
-};
-
 function selectionClick(id){
       document.getElementById("HomeScreen").style.display = "none";
       document.getElementById(id).style.display = "block";
@@ -168,16 +52,11 @@ function addToDatabase(){
   var intensity = document.getElementById("inputIntensity").value;
   var violence = document.getElementById("inputViolence").value;
   
-  const newGame = new Game(title, popularity, difficulty, length, retroness, intensity, violence);
-
-  //insert data into collections
-  addGameToCollections(newGame);
-  
   //insert game object into database
   
 };
 
-function addGameToCollections(game) {
+function addGameToCollection(game) {
   //create a new div
   const newDiv = document.createElement("div");
   newDiv.style = "outline-width: 2px; outline-style: solid;";
