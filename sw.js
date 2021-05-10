@@ -6,6 +6,7 @@ const PRECACHE_URLS = [
   'index.html',
   './', //alias for index.html
   'css/base.css',
+  'css/bg.png',
   'js/localDB.js',
   'js/app.js',
   'js/base.js',
