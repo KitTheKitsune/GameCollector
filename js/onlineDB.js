@@ -143,6 +143,10 @@ function sync() {
   db.replicate.to(remoteCouch, opts, syncError);
   db.replicate.from(remoteCouch, opts, syncError);
 }
+  
+function syncError() {
+  syncDom.setAttribute('data-sync-state', 'error');
+}
 
 addEventListeners();
 showGames();
