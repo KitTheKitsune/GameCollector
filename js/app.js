@@ -181,5 +181,18 @@ function calcLength(hours) {
 };
 
 function selectSection(sectionName) {
-  
+  document.getElementById("HomeScreen").style.display = "none";
+  document.getElementById(id).style.display = "block";
 }
+
+function regSW(){
+  
+  if('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js');
+  }
+};
+
+function backClick(id){
+  document.getElementById("HomeScreen").style.display = "block";
+  document.getElementById(id).style.display = "none";
+};
