@@ -26,7 +26,7 @@
 	  
 	  <div id="collection">
 		  <input id="new-game" placeholder="Which Game?" autofocus>
-		  <button type="button" onclick="var keyboardEvent = document.createEvent('KeyboardEvent');
+		  <button type="button" onclick="var keyboardEvent = document.createEvent('Event');
 						 var initMethod = typeof keyboardEvent.initKeyboardEvent !== 'undefined' ? 'initKeyboardEvent' : 'initKeyEvent';
 						 keyboardEvent[initMethod](
 							 'keydown',
