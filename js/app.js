@@ -160,3 +160,22 @@
   }
 
 })();
+
+
+function calcRetroness(year) {
+  year = parseInt(year);
+  const oldest = 1970;
+  const yearsSince = year - oldest;
+  var max = new Date().getFullYear() - oldest;
+  var out = max / yearsSince;
+  return Math.round(out * 10) / 10;
+};
+
+function calcLength(hours) {
+  hours = parseInt(hours);
+  if (hours > 80) {
+    hours = 80;
+  }
+  var out = hours / 80 * 10;
+  return Math.round(out * 10) / 10;
+};
