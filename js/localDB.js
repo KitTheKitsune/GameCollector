@@ -3,12 +3,12 @@
   'use strict';
 
   var ENTER_KEY = 13;
-  var newTodoDom = document.getElementById('new-game');
+  var newGameDom = document.getElementById('new-game');
 
 var collection = new PouchDB('collection');
 var remoteCouch = false;
 
-db.changes({
+collection.changes({
   since: 'now',
   live: true
 }).on('change', showGames());
@@ -70,7 +70,7 @@ function createGameListItem(game) {
 
   var deleteLink = document.createElement('button');
   deleteLink.className = 'destroy';
-  deleteLink.addEventListener( 'click', deleteButtonPressed.bind(this, todo));
+  deleteLink.addEventListener( 'click', deleteButtonPressed.bind(this, game));
 
   var divDisplay = document.createElement('div');
   divDisplay.className = 'view';
@@ -84,16 +84,40 @@ function createGameListItem(game) {
   divDisplay.appendChild(rel);
   divDisplay.appendChild(deleteLink);
 
-  var inputEditTodo = document.createElement('input');
-  inputEditTodo.id = 'input_' + game._id;
-  inputEditTodo.className = 'edit';
-  inputEditTodo.value = game._title;
-  inputEditTodo.addEventListener('keypress', todoKeyPressed.bind(this, todo));
+  var inputEditGame = document.createElement('input');
+  inputEditGame.id = 'input_' + game._id;
+  inputEditGame.className = 'edit';
+  inputEditGame.value = game._title;
+  inputEditGame.addEventListener('keypress', gameKeyPressed.bind(this, game));
 
   var li = document.createElement('li');
   li.id = 'li_' + game._id;
   li.appendChild(divDisplay);
-  li.appendChild(inputEditTodo);
+  li.appendChild(inputEditGame);
 
   return li;
 }
+  
+function redrawGamesUI(todos) {
+  var ul = document.getElementById('game-list');
+  ul.innerHTML = '';
+  game.forEach(function(game) {
+    ul.appendChild(createGameListItem(game.doc));
+  });
+}
+
+function newGameKeyPressHandler( event ) {
+  if (event.keyCode === ENTER_KEY) {
+    addGame(newGameDom.value);
+    newGameDom.value = '';
+  }
+}
+
+function addEventListeners() {
+  newGameDom.addEventListener('keypress', newGameKeyPressHandler, false);
+}
+
+addEventListeners();
+showGames();
+
+})();
