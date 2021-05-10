@@ -6,7 +6,7 @@
   var newGameDom = document.getElementById('new-game-title-db');
   var syncDom = document.getElementById('sync-wrapper');
 
-var db = new PouchDB('games');
+var db = new PouchDB('Allgames');
 var remoteCouch = 'https://e4ac5b86-21e2-43b2-a017-a1e7172dda41-bluemix.cloudantnosqldb.appdomain.cloud/';
 
 db.info(function(err, info) {
@@ -38,7 +38,7 @@ function addGame(_title /*, pop, dif, inte, vio, hours, rel, img*/) {
 }
     
 function showGames() {
-  console.log("attempt to show games")
+  //console.log("attempt to show games")
   db.allDocs({include_docs: true, descending: true}).then(function(doc) {
     redrawGamesUI(doc.rows);
   }).catch(function (err) {
