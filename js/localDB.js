@@ -27,10 +27,12 @@ function addGame(title /*, pop, dif, inte, vio, hours, rel, img*/) {
     _relaseYear: rel,
     _image: img*/
   };
-  collection.put(game, function callback(err, result) {
-    if (!err) {
-      console.log('Successfully added game to your collection!');
-    }
+  collection.put(game).then(function (result) {
+    console.log("game added successfully");
+    console.log(result);
+  }).catch(function (err) {
+    console.log("game add failure");
+    console.log(err);
   });
 }
     
@@ -117,7 +119,6 @@ function newGameKeyPressHandler( event ) {
   console.log(event.keyCode);
   if (event.keyCode === ENTER_KEY) {
     addGame(newGameDom.value);
-    console.log(newGameDom.value + " added");
     newGameDom.value = '';
   }
 }
