@@ -101,7 +101,7 @@ function createGameListItem(game) {
 function redrawGamesUI(todos) {
   var ul = document.getElementById('game-list');
   ul.innerHTML = '';
-  game.forEach(function(game) {
+  collection.forEach(function(game) {
     ul.appendChild(createGameListItem(game.doc));
   });
 }
