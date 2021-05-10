@@ -106,10 +106,10 @@
   }
 
   function redrawGamesUI(games) {
-    console.log("attempt to redraw UI");
+    //console.log("attempt to redraw UI");
     var ul = document.getElementById('game-list');
     ul.innerHTML = '';
-    console.log(games);
+    //console.log(games);
     games.forEach(function(game) {
       ul.appendChild(createGameListItem(game.doc));
     });
