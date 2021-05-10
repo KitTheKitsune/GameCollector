@@ -1,10 +1,10 @@
 
 #header {
-  display: inline;
+  display: flex;
 }
 
 .container {
-  display: flex;
+  display: block;
   flex-wrap: wrap;
   align-content: center;
 }
