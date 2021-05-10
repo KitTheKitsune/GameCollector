@@ -115,6 +115,14 @@ function redrawGamesUI(games) {
     ul.appendChild(createGameListItem(game.doc));
   });
 }
+  
+
+function gameKeyPressed(game, event) {
+  if (event.keyCode === ENTER_KEY) {
+    var inputEditGame = document.getElementById('input_' + game._id);
+    inputEditGame.blur();
+  }
+}
 
 function newGameKeyPressHandler( event ) {
   console.log(event.keyCode);
