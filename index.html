@@ -21,91 +21,10 @@
   </head>
   <body onload="regSW();">
 	  
-	  <div id="HomeScreen">
-	    <div class="Content">
-	      <div class="ButtonLine">
-		<button type="image" class="SectionButton"><img src="images/collection.jpeg" class="ButtonImage" 
-								onclick="selectionClick('CollectionScreen')"></button>
-		<button type="button" class="SectionButton"><img src="images/analysis.png" class="ButtonImage"
-								 onclick="selectionClick('AnalysisScreen')"></button>
-	      </div>
-	      <div class="ButtonLine">
-		<button type="button" class="SectionButton"><img src="images/recommend.png" class="ButtonImage"
-								 onclick="selectionClick('RecommendScreen')"></button>
-		<button type="button" class="SectionButton"><img src="images/addNew.png" class="ButtonImage"
-								 onclick="selectionClick('AddNewScreen')"></button>
-	      </div>
-	    </div>
-		  
-		  <div id="CollectionScreen" class="Page">
-	    <div class="NavBar">
-	      <button onclick="backClick('CollectionScreen')">Back</button>
-	    </div>
-	    <div class="Content" style="color: white;">
-	      <h1 class="Title">Collections Screen</h1>
-	      <div class="manuallyAdded" id="manual">
-		<div  id="insertBefore">
-		</div>
-	      </div>
-	    </div>
+	  <div class = "container">
+		  <h3>Main Screen</h3>
+		  <button type="button" onclick="SelectSection('db')">View Database</button>
 	  </div>
-
-	  <div id="AnalysisScreen" class="Page">
-	    <div class="NavBar">
-	      <button onclick="backClick('AnalysisScreen')">Back</button>
-	    </div>
-	    <div class="Content">
-	      <h1 class="Title">Analysis Screen</h1>
-	    </div>
-	  </div>
-
-	  <div id="RecommendScreen" class="Page">
-	    <div class="NavBar">
-	      <button onclick="backClick('RecommendScreen')">Back</button>
-	    </div>
-	    <div class="Content">
-	      <h1 class="Title">Recommend Screen</h1>
-	    </div>
-	  </div>
-
-	  <div id="AddNewScreen" class="Page">
-	    <div class="NavBar">
-	      <button onclick="backClick('AddNewScreen')">Back</button>
-	    </div>
-	    <div class="Content">
-	      <h1 class="Title">Add New</h1>
-
-	      <div id="inputForm">
-		<form style="color: #FFFFFF;">
-		  Game Title: <br> <input type="text" id="gameTitleInput" name="gameTitle" value="game title">
-		  <br>
-		  <p id="searchResults"></p>
-		</form>
-		<button type="button" onclick="searchForGame()">Search</button>
-		<button type="button" id="addToDatabaseButton" onclick="showAddToDatabaseForm()" style="display:none;">Add To Database</button>
-	      </div>
-
-	      <div id="addForm" style="display: none;">
-		<form style="color: #FFFFFF;">
-		  Game Title: <br> <input type="text" id="inputTitle" value="game title">
-		  <br>
-		  Rating: <br> <input type="text" id="inputPopularity" value="rate from 1 to 10">
-		  <br>
-		  Difficulty: <br> <input type="text" id="inputDifficulty" value="rate from 1 to 10">
-		  <br>
-		  Length: <br> <input type="text" id="inputLength" value="number of hours to complete the game">
-		  <br>
-		  Release Year: <br> <input type="text" id="inputRetroness" value="year of the game's release">
-		  <br>
-		  Intensity: <br> <input type="text" id="inputIntensity" value="rate from 1 to 10">
-		  <br>
-		  Violence: <br> <input type="text" id="inputViolence" value="rate from 1 to 10">
-		  <br>
-		  <p id="confirmation"></p>
-		</form>
-		<button type="button" onclick="addToDatabase()">Confirm</button>
-	      </div>
-
 	  
 	  
 	  
@@ -113,7 +32,7 @@
 	  
 	  
 	  
-	<div id="ignore" style="display: none;">  
+	<div id="ignore">  
 	    <section id="todoapp">
 	      <header id="header">
 		<h1>todos</h1>
@@ -137,10 +56,12 @@
 	      <p>Cleanup, edits by <a href="http://github.com/boushley">Aaron Boushley</a></p>
 	    </footer>
 	</div>
+	  
 	<script src="//cdn.jsdelivr.net/npm/pouchdb@7.2.1/dist/pouchdb.min.js"></script>
 	<script src="js/base.js"></script>
 	<script src="js/app.js"></script>
 	<script src ="js/main.js"></script>  
+	  
   </body>
 </html>
 
