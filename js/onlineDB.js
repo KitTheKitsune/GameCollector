@@ -8,8 +8,8 @@
 var db = new PouchDB('games');
 var remoteCouch = 'https://e4ac5b86-21e2-43b2-a017-a1e7172dda41-bluemix.cloudantnosqldb.appdomain.cloud/';
 
-collection.info(function(err, info) {
-  collection.changes({
+db.info(function(err, info) {
+ db.changes({
     since: 'now',
     live: true
   }).on('change', showGames);
@@ -27,7 +27,7 @@ function addGame(_title /*, pop, dif, inte, vio, hours, rel, img*/) {
     _relaseYear: rel,
     _image: img*/
   };
-  collection.put(game).then(function (result) {
+  db.put(game).then(function (result) {
     console.log("game added successfully");
     console.log(result);
   }).catch(function (err) {
@@ -38,7 +38,7 @@ function addGame(_title /*, pop, dif, inte, vio, hours, rel, img*/) {
     
 function showGames() {
   console.log("attempt to show games")
-  collection.allDocs({include_docs: true, descending: true}).then(function(doc) {
+  db.allDocs({include_docs: true, descending: true}).then(function(doc) {
     redrawGamesUI(doc.rows);
   }).catch(function (err) {
     console.log(err);
@@ -46,7 +46,7 @@ function showGames() {
 }
 
 function deleteButtonPressed(game) {
-  collection.remove(game);
+  db.remove(game);
 }
   
 function createGameListItem(game) {
