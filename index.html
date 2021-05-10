@@ -21,7 +21,7 @@
   </head>
   <body onload="regSW();">
 	  <header>
-		  <span><button type="button" onclick="back('collection')">back</button></span>
+		  <span><button type="button" onclick="back('collection'); back('data');">back</button></span>
 		  <span><p>v0.2.11</p></span>
 	  </header>
 	  
@@ -34,9 +34,19 @@
 		  </ul>
 	  </div>
 	  
+	  <div class="container" id="data" style="display:none">
+		  <input id="new-game-title-db" placeholder="Which Game?" autofocus>
+		  <button type="button" onclick="">Add To Database [Enter]</button>
+		  <h3>All Games</h3>
+		  <ul id="game-list-db" style="border: 1px solid">
+		  	<li>My Games</li>
+		  </ul>
+	  </div>
+	  
 	  <div class="container" id="homescreen">
 		  <h3>Main Screen</h3>
 		  <button type="button" onclick="selectSection('collection')">View Collection</button>
+		  <button type="button" onclick="selectSection('data')">View Collection</button>
 	  </div>
 	  
 	  
