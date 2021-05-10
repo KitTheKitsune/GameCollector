@@ -1,3 +1,10 @@
+(function() {
+
+  'use strict';
+
+  var ENTER_KEY = 13;
+  var newTodoDom = document.getElementById('new-game');
+
 var collection = new PouchDB('collection');
 var remoteCouch = false;
 
