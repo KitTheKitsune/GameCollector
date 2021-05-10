@@ -37,6 +37,7 @@ body {
 .container {
   text-align: center;
   align-content: center;
+  height: 80%;
 }
 
 #header {
