@@ -3,7 +3,7 @@
   'use strict';
 
   var ENTER_KEY = 13;
-  var newGameDom = document.getElementById('new-game');
+  var newGameDom = document.getElementById('new-game-title');
 
 var collection = new PouchDB('collection');
 var remoteCouch = false;
@@ -109,6 +109,7 @@ function redrawGamesUI(games) {
 function newGameKeyPressHandler( event ) {
   if (event.keyCode === ENTER_KEY) {
     addGame(newGameDom.value);
+    console.log(newGameDom.value + " added");
     newGameDom.value = '';
   }
 }
