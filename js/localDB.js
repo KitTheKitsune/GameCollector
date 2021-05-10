@@ -33,6 +33,7 @@ function addGame(title, pop, dif, inte, vio, hours, rel, img) {
 }
     
 function showGames() {
+  console.log("attempt to show games")
   collection.allDocs({include_docs: true, descending: true}, function(err, doc) {
     redrawGamesUI(doc.rows);
   });
