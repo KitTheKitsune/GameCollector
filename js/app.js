@@ -1,4 +1,4 @@
-(function() {
+/*(function() {
 
   'use strict';
 
@@ -160,7 +160,7 @@
   }
 
 })();
-
+*/
 
 function calcRetroness(year) {
   year = parseInt(year);
