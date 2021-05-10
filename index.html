@@ -27,7 +27,7 @@
 	  
 	  <div class="container" id="collection" style="display:none">
 		  <input id="new-game-title" placeholder="Which Game?" autofocus>
-		  <button type="button" onclick="document.dispatchEvent(
+		  <button type="button" onclick="document.getElementById('new-game-title').dispatchEvent(
 						  new KeyboardEvent('keydown', {
 						    'keyCode': 13,
 						    'which': 13
