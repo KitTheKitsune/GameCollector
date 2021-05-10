@@ -182,7 +182,7 @@ function calcLength(hours) {
 
 function selectSection(sectionName) {
   document.getElementById("homescreen").style.display = "none";
-  document.getElementById(sectionName).style.display = "flex";
+  document.getElementById(sectionName).style.display = "block";
 }
 
 function regSW(){
@@ -193,6 +193,6 @@ function regSW(){
 };
 
 function back(sectionName){
-  document.getElementById("homescreen").style.display = "flex";
+  document.getElementById("homescreen").style.display = "block";
   document.getElementById(sectionName).style.display = "none";
 };
