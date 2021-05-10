@@ -103,8 +103,8 @@ function redrawGamesUI(games) {
   console.log("attempt to redraw UI");
   var ul = document.getElementById('game-list');
   ul.innerHTML = '';
+  console.log(games);
   games.forEach(function(game) {
-    console.log(game.doc);
     ul.appendChild(createGameListItem(game.doc));
   });
 }
