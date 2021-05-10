@@ -192,7 +192,7 @@ function regSW(){
   }
 };
 
-function back(){
+function back(sectionName){
   document.getElementById("HomeScreen").style.display = "block";
-  document.getElementById().style.display = "none";
+  document.getElementById(sectionName).style.display = "none";
 };
