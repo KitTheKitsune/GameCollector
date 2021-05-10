@@ -15,10 +15,10 @@ collection.info(function(err, info) {
   }).on('change', showGames);
 });
 
-function addGame(title /*, pop, dif, inte, vio, hours, rel, img*/) {
+function addGame(_title /*, pop, dif, inte, vio, hours, rel, img*/) {
   var game = {
     _id: new Date().toISOString(),
-    _title: title,
+    title: _title,
     /*_popularity: pop,
     _difficulty: dif,
     _intensity: inte,
@@ -52,7 +52,7 @@ function deleteButtonPressed(game) {
 function createGameListItem(game) {
   
   var title = document.createElement('label');
-  title.appendChild( document.createTextNode(game._title));
+  title.appendChild( document.createTextNode(game.title));
   
   /*var pop = document.createElement('label');
   pop.appendChild( document.createTextNode(game._popularity));
@@ -94,7 +94,7 @@ function createGameListItem(game) {
   var inputEditGame = document.createElement('input');
   inputEditGame.id = 'input_' + game._id;
   inputEditGame.className = 'edit';
-  inputEditGame.value = game._title;
+  inputEditGame.value = game.title;
   inputEditGame.addEventListener('keypress', gameKeyPressed.bind(this, game));
 
   var li = document.createElement('li');
