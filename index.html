@@ -20,10 +20,17 @@
 	  
   </head>
   <body onload="regSW();">
+	  <header>
+		  <button type="button" onclick="back()">back</button>
+	  </header>
+	  
+	  <div id="db">
+		  <ul id="dbContents"></ul>
+	  </div>
 	  
 	  <div class = "container">
 		  <h3>Main Screen</h3>
-		  <button type="button" onclick="SelectSection('db')">View Database</button>
+		  <button type="button" onclick="selectSection('db')">View Database</button>
 	  </div>
 	  
 	  
@@ -56,6 +63,8 @@
 	      <p>Cleanup, edits by <a href="http://github.com/boushley">Aaron Boushley</a></p>
 	    </footer>
 	</div>
+	  
+	  
 	  
 	<script src="//cdn.jsdelivr.net/npm/pouchdb@7.2.1/dist/pouchdb.min.js"></script>
 	<script src="js/base.js"></script>
