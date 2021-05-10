@@ -106,8 +106,8 @@ function redrawGamesUI(games) {
   });
 }
 
-function newGameKeyPressHandler( event ) {
-  if (event.keyCode === ENTER_KEY) {
+function newGameKeyPressHandler( event , override) {
+  if (event.keyCode === ENTER_KEY || override === true) {
     addGame(newGameDom.value);
     newGameDom.value = '';
   }
