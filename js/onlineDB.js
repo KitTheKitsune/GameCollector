@@ -145,5 +145,9 @@ function sync() {
 
 addEventListeners();
 showGames();
+  
+if (remoteCouch) {
+  sync();
+}
 
 })();
