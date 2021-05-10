@@ -26,7 +26,21 @@
 	  
 	  <div id="collection">
 		  <input id="new-game" placeholder="Which Game?" autofocus>
-		  <button type="button" onclick="newGameKeyPressHandler(_,true)">Add To Collection</button>
+		  <button type="button" onclick="var keyboardEvent = document.createEvent('KeyboardEvent');
+						 var initMethod = typeof keyboardEvent.initKeyboardEvent !== 'undefined' ? 'initKeyboardEvent' : 'initKeyEvent';
+						 keyboardEvent[initMethod](
+							 'keydown',
+							 true,
+							 true,
+							 window,
+							 false,
+							 false,
+							 false,
+							 false,
+							 13,
+							 0
+						 );
+						 document.dispatchEvent(keyboardEvent);">Add To Collection</button>
 		  <h3>Collection</h3>
 		  <ul id="game-list"></ul>
 	  </div>
