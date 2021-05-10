@@ -5,8 +5,10 @@ const RUNTIME = 'runtime';
 const PRECACHE_URLS = [
   'index.html',
   './', //alias for index.html
-  'css/style.css',
+  'css/base.css',
   'js/localDB.js',
+  'js/app.js',
+  'js/base.js',
   'images/hello-icon-128.png',
   'images/hello-icon-144.png',
   'images/hello-icon-152.png',
