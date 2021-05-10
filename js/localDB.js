@@ -5,7 +5,7 @@
   var ENTER_KEY = 13;
   var newGameDom = document.getElementById('new-game-title');
 
-var collection = new PouchDB('collection');
+var collection = new PouchDB('games');
 var remoteCouch = false;
 
 collection.changes({
