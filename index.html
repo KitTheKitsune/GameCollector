@@ -25,14 +25,13 @@
 		  <p>v0.2.2</p>
 	  </header>
 	  
-	  <div id="collection">
+	  <div id="collection" style="display:none">
 		  <input id="new-game-title" placeholder="Which Game?" autofocus>
 		  <button type="button" onclick="document.dispatchEvent(
 						  new KeyboardEvent('keydown', {
-						    keyCode: 13,
-						    which: 13
-						  })
-						);
+						    'keyCode': 13,
+						    'which': 13
+						  }));
 						 console.log('button pressed')">Add To Collection</button>
 		  <h3>Collection</h3>
 		  <ul id="game-list">
@@ -42,7 +41,7 @@
 	  
 	  <div class = "container">
 		  <h3>Main Screen</h3>
-		  <button type="button" onclick="selectSection('collection')">View Database</button>
+		  <button type="button" onclick="selectSection('collection')">View Collection</button>
 	  </div>
 	  
 	  
