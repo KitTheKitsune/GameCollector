@@ -107,8 +107,8 @@ function createGameListItem(game) {
 }
   
 function redrawGamesUI(games) {
-  console.log("attempt to redraw UI");
-  var ul = document.getElementById('game-list');
+  //console.log("attempt to redraw UI");
+  var ul = document.getElementById('game-list-db');
   ul.innerHTML = '';
   console.log(games);
   games.forEach(function(game) {
@@ -125,7 +125,7 @@ function gameKeyPressed(game, event) {
 }
 
 function newGameKeyPressHandler( event ) {
-  console.log(event.keyCode);
+  //console.log(event.keyCode);
   if (event.keyCode === ENTER_KEY) {
     addGame(newGameDom.value);
     newGameDom.value = '';
