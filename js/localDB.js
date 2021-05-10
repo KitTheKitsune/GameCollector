@@ -101,7 +101,8 @@ function createGameListItem(game) {
   li.id = 'li_' + game._id;
   li.appendChild(divDisplay);
   li.appendChild(inputEditGame);
-
+  console.log(li)
+  
   return li;
 }
   
