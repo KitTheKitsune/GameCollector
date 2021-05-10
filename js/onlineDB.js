@@ -7,7 +7,8 @@
   var syncDom = document.getElementById('sync-wrapper');
 
 var db = new PouchDB('Allgames');
-var remoteCouch = 'https://e4ac5b86-21e2-43b2-a017-a1e7172dda41-bluemix:Wolfshadow0016!@e4ac5b86-21e2-43b2-a017-a1e7172dda41-bluemix.cloudant.com/';
+  var user = 'kendricksmith@creighton.edu';
+var remoteCouch = 'https://' + user + ':Wolfshadow0016!@e4ac5b86-21e2-43b2-a017-a1e7172dda41-bluemix.cloudant.com/';
 
 db.info(function(err, info) {
  db.changes({
