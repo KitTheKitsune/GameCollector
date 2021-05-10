@@ -179,3 +179,7 @@ function calcLength(hours) {
   var out = hours / 80 * 10;
   return Math.round(out * 10) / 10;
 };
+
+function selectSection(sectionName) {
+  
+}
