@@ -13,17 +13,17 @@ collection.changes({
   live: true
 }).on('change', showGames);
 
-function addGame(title, pop, dif, inte, vio, hours, rel, img) {
+function addGame(title /*, pop, dif, inte, vio, hours, rel, img*/) {
   var game = {
     _id: new Date().toISOString(),
     _title: title,
-    _popularity: pop,
+    /*_popularity: pop,
     _difficulty: dif,
     _intensity: inte,
     _violence: vio,
     _hoursToComplete: hours,
     _relaseYear: rel,
-    _image: img
+    _image: img*/
   };
   collection.put(game, function callback(err, result) {
     if (!err) {
@@ -34,8 +34,10 @@ function addGame(title, pop, dif, inte, vio, hours, rel, img) {
     
 function showGames() {
   console.log("attempt to show games")
-  collection.allDocs({include_docs: true, descending: true}, function(err, doc) {
+  collection.allDocs({include_docs: true, descending: true}).then(function(doc) {
     redrawGamesUI(doc.rows);
+  }).catch(function (err) {
+    console.log(err);
   });
 }
 
@@ -48,7 +50,7 @@ function createGameListItem(game) {
   var title = document.createElement('label');
   title.appendChild( document.createTextNode(game._title));
   
-  var pop = document.createElement('label');
+  /*var pop = document.createElement('label');
   pop.appendChild( document.createTextNode(game._popularity));
   
   var dif = document.createElement('label');
@@ -67,7 +69,7 @@ function createGameListItem(game) {
   rel.appendChild( document.createTextNode(game._releaseYear));
   
   var image = document.createElement('img');
-  image.appendChild( document.createTextNode(game._image));
+  image.appendChild( document.createTextNode(game._image)); */
 
   var deleteLink = document.createElement('button');
   deleteLink.className = 'destroy';
@@ -75,14 +77,14 @@ function createGameListItem(game) {
 
   var divDisplay = document.createElement('div');
   divDisplay.className = 'view';
-  divDisplay.appendChild(image);
+  //divDisplay.appendChild(image);
   divDisplay.appendChild(title);
-  divDisplay.appendChild(pop);
+  /*divDisplay.appendChild(pop);
   divDisplay.appendChild(dif);
   divDisplay.appendChild(inte);
   divDisplay.appendChild(vio);
   divDisplay.appendChild(hours);
-  divDisplay.appendChild(rel);
+  divDisplay.appendChild(rel);*/
   divDisplay.appendChild(deleteLink);
 
   var inputEditGame = document.createElement('input');
