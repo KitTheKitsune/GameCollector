@@ -1,40 +1,146 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>VanillaJS • TodoMVC</title>
-    <link rel="stylesheet" href="css/base.css">
-    <!--[if IE]>
-      <script src="style/ie.js"></script>
-    <![endif]-->
+	<title>Game Collector</title>
+	  
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="manifest" href="manifest.json">
+	<link rel="icon" href="favicon.ico" type="image/x-icon" />
+	<link rel="apple-touch-icon" href="images/hello-icon-512.png">
+	  
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="white" />
+	<meta name="apple-mobile-web-app-capable" content="yes" >
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" >
+	<meta name="apple-mobile-web-app-title" content="Hello World">
+	<meta name="msapplication-TileColor" content="#FFFFFF">
+	<meta name="msapplication-TileImage" content="images/hello-icon-144.png">
+	  
   </head>
-  <body>
-    <section id="todoapp">
-      <header id="header">
-	<h1>todos</h1>
-	<input id="new-todo" placeholder="What needs to be done?" autofocus>
-      </header>
-      <section id="main">
-	<ul id="todo-list"></ul>
-      </section>
-      <footer id="footer">
-	<span id="todo-count"></span>
-        <div id="sync-wrapper">
-          <div id="sync-success">Currently syncing</div>
-          <div id="sync-error">There was a problem syncing</div>
-        </div>
-      </footer>
-    </section>
-    <footer id="info">
-      <p>Double-click to edit a todo</p>
-      <p>Template by <a href="http://github.com/sindresorhus">Sindre Sorhus</a></p>
-      <p>Created by <a href="http://twitter.com/ffesseler">Florian Fesseler</a></p>
-      <p>Cleanup, edits by <a href="http://github.com/boushley">Aaron Boushley</a></p>
-    </footer>
-    <script src="//cdn.jsdelivr.net/npm/pouchdb@7.2.1/dist/pouchdb.min.js"></script>
-    <script src="js/base.js"></script>
-    <script src="js/app.js"></script>
+  <body onload="regSW();">
+	  
+	  <div id="HomeScreen">
+	    <div class="Content">
+	      <div class="ButtonLine">
+		<button type="image" class="SectionButton"><img src="images/collection.jpeg" class="ButtonImage" 
+								onclick="selectionClick('CollectionScreen')"></button>
+		<button type="button" class="SectionButton"><img src="images/analysis.png" class="ButtonImage"
+								 onclick="selectionClick('AnalysisScreen')"></button>
+	      </div>
+	      <div class="ButtonLine">
+		<button type="button" class="SectionButton"><img src="images/recommend.png" class="ButtonImage"
+								 onclick="selectionClick('RecommendScreen')"></button>
+		<button type="button" class="SectionButton"><img src="images/addNew.png" class="ButtonImage"
+								 onclick="selectionClick('AddNewScreen')"></button>
+	      </div>
+	    </div>
+		  
+		  <div id="CollectionScreen" class="Page">
+	    <div class="NavBar">
+	      <button onclick="backClick('CollectionScreen')">Back</button>
+	    </div>
+	    <div class="Content" style="color: white;">
+	      <h1 class="Title">Collections Screen</h1>
+	      <div class="manuallyAdded" id="manual">
+		<div  id="insertBefore">
+		</div>
+	      </div>
+	    </div>
+	  </div>
+
+	  <div id="AnalysisScreen" class="Page">
+	    <div class="NavBar">
+	      <button onclick="backClick('AnalysisScreen')">Back</button>
+	    </div>
+	    <div class="Content">
+	      <h1 class="Title">Analysis Screen</h1>
+	    </div>
+	  </div>
+
+	  <div id="RecommendScreen" class="Page">
+	    <div class="NavBar">
+	      <button onclick="backClick('RecommendScreen')">Back</button>
+	    </div>
+	    <div class="Content">
+	      <h1 class="Title">Recommend Screen</h1>
+	    </div>
+	  </div>
+
+	  <div id="AddNewScreen" class="Page">
+	    <div class="NavBar">
+	      <button onclick="backClick('AddNewScreen')">Back</button>
+	    </div>
+	    <div class="Content">
+	      <h1 class="Title">Add New</h1>
+
+	      <div id="inputForm">
+		<form style="color: #FFFFFF;">
+		  Game Title: <br> <input type="text" id="gameTitleInput" name="gameTitle" value="game title">
+		  <br>
+		  <p id="searchResults"></p>
+		</form>
+		<button type="button" onclick="searchForGame()">Search</button>
+		<button type="button" id="addToDatabaseButton" onclick="showAddToDatabaseForm()" style="display:none;">Add To Database</button>
+	      </div>
+
+	      <div id="addForm" style="display: none;">
+		<form style="color: #FFFFFF;">
+		  Game Title: <br> <input type="text" id="inputTitle" value="game title">
+		  <br>
+		  Rating: <br> <input type="text" id="inputPopularity" value="rate from 1 to 10">
+		  <br>
+		  Difficulty: <br> <input type="text" id="inputDifficulty" value="rate from 1 to 10">
+		  <br>
+		  Length: <br> <input type="text" id="inputLength" value="number of hours to complete the game">
+		  <br>
+		  Release Year: <br> <input type="text" id="inputRetroness" value="year of the game's release">
+		  <br>
+		  Intensity: <br> <input type="text" id="inputIntensity" value="rate from 1 to 10">
+		  <br>
+		  Violence: <br> <input type="text" id="inputViolence" value="rate from 1 to 10">
+		  <br>
+		  <p id="confirmation"></p>
+		</form>
+		<button type="button" onclick="addToDatabase()">Confirm</button>
+	      </div>
+
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	<div id="ignore" style="display: none;">  
+	    <section id="todoapp">
+	      <header id="header">
+		<h1>todos</h1>
+		<input id="new-todo" placeholder="What needs to be done?" autofocus>
+	      </header>
+	      <section id="main">
+		<ul id="todo-list"></ul>
+	      </section>
+	      <footer id="footer">
+		<span id="todo-count"></span>
+		<div id="sync-wrapper">
+		  <div id="sync-success">Currently syncing</div>
+		  <div id="sync-error">There was a problem syncing</div>
+		</div>
+	      </footer>
+	    </section>
+	    <footer id="info">
+	      <p>Double-click to edit a todo</p>
+	      <p>Template by <a href="http://github.com/sindresorhus">Sindre Sorhus</a></p>
+	      <p>Created by <a href="http://twitter.com/ffesseler">Florian Fesseler</a></p>
+	      <p>Cleanup, edits by <a href="http://github.com/boushley">Aaron Boushley</a></p>
+	    </footer>
+	</div>
+	<script src="//cdn.jsdelivr.net/npm/pouchdb@7.2.1/dist/pouchdb.min.js"></script>
+	<script src="js/base.js"></script>
+	<script src="js/app.js"></script>
+	<script src ="js/main.js"></script>  
   </body>
 </html>
 
