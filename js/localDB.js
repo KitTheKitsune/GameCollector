@@ -110,6 +110,7 @@ function redrawGamesUI(games) {
 }
 
 function newGameKeyPressHandler( event ) {
+  console.log(event.keyCode);
   if (event.keyCode === ENTER_KEY) {
     addGame(newGameDom.value);
     console.log(newGameDom.value + " added");
