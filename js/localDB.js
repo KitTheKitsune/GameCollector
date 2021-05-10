@@ -11,7 +11,7 @@ var remoteCouch = false;
 collection.changes({
   since: 'now',
   live: true
-}).on('change', showGames());
+}).on('change', showGames);
 
 function addGame(title, pop, dif, inte, vio, hours, rel, img) {
   var game = {
@@ -98,10 +98,10 @@ function createGameListItem(game) {
   return li;
 }
   
-function redrawGamesUI(todos) {
+function redrawGamesUI(games) {
   var ul = document.getElementById('game-list');
   ul.innerHTML = '';
-  collection.forEach(function(game) {
+  games.forEach(function(game) {
     ul.appendChild(createGameListItem(game.doc));
   });
 }
