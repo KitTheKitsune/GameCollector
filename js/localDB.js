@@ -8,10 +8,12 @@
 var collection = new PouchDB('games');
 var remoteCouch = false;
 
-collection.changes({
-  since: 'now',
-  live: true
-}).on('change', showGames);
+collection.info(function(err, info) {
+  collection.changes({
+    since: 'now',
+    live: true
+  }).on('change', showGames);
+});
 
 function addGame(title /*, pop, dif, inte, vio, hours, rel, img*/) {
   var game = {
