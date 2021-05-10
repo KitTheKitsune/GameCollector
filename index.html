@@ -22,17 +22,12 @@
   <body onload="regSW();">
 	  <header>
 		  <button type="button" onclick="back('collection')">back</button>
-		  <p>v0.2.8</p>
+		  <p>v0.2.9</p>
 	  </header>
 	  
 	  <div class="container" id="collection" style="display:none">
 		  <input id="new-game-title" placeholder="Which Game?" autofocus>
-		  <button type="button" onclick="var key = new KeyboardEvent('keydown', {
-						    'keyCode': 13,
-						    'which': 13
-						  }));
-						 document.getElementById('new-game-title').dispatchEvent(key);
-						 console.log('button pressed')">Add To Collection</button>
+		  <button type="button" onclick="">Add To Collection [Enter]</button>
 		  <h3>Collection</h3>
 		  <ul id="game-list" style="border: 1px solid">
 		  	<li>My Games</li>
